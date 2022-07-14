@@ -3,7 +3,7 @@ from models import User, Order, Offer
 from setup_db import db
 from utils import get_all, insert_data_user, get_all_users_by_id, get_all_orders_by_id, get_all_offers_by_id, \
     update_universal, delete_universal, insert_data_order, insert_data_offer, init_db
-from flask import Flask
+from flask import Flask, jsonify
 from flask import request
 
 
