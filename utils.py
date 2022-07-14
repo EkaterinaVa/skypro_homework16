@@ -79,13 +79,13 @@ def init_db():
     db.drop_all()
     db.create_all()
 
-    with open("../data/users.json") as f:
+    with open("./data/users.json", encoding='utf-8') as f:
         insert_data_user(json.load(f))
 
-    with open("../data/orders.json") as f:
+    with open("./data/orders.json", encoding='utf-8') as f:
         insert_data_order(json.load(f))
 
-    with open("../data/offers.json") as f:
+    with open("./data/offers.json", encoding='utf-8') as f:
         insert_data_offer(json.load(f))
 
 

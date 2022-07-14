@@ -2,7 +2,7 @@ import json
 from models import User, Order, Offer
 from setup_db import db
 from utils import get_all, insert_data_user, get_all_users_by_id, get_all_orders_by_id, get_all_offers_by_id, \
-    update_universal, delete_universal, insert_data_order, insert_data_offer
+    update_universal, delete_universal, insert_data_order, insert_data_offer, init_db
 from flask import Flask
 from flask import request
 
@@ -17,6 +17,8 @@ app.config['JSON_AS_ASCII'] = False
 # Добавляем контекст приложения
 db.init_app(app)
 app.app_context().push()
+init_db()
+
 
 # Вьюшки
 @app.route("/users/", methods=['GET', 'POST'])
@@ -76,7 +78,7 @@ def get_user_by_id(user_id):
             mimetype="application.json"
         )
 
-@app.route("/orders/", methods=['GET, POST'])
+@app.route("/orders/", methods=['GET', 'POST'])
 def get_orders():
     """
     Вьюшка обрабатывает GET-запросы получения всех заказов
@@ -103,7 +105,7 @@ def get_orders():
         )
 
 
-@app.route("/orders/<int:order_id>", methods=['GET, PUT, DELETE'])
+@app.route("/orders/<int:order_id>", methods=['GET', 'PUT', 'DELETE'])
 def get_order_by_id(order_id):
     """
     Вьюшка обрабатывает GET-запросы получения заказов по id,
@@ -133,7 +135,7 @@ def get_order_by_id(order_id):
             mimetype="application.json"
         )
 
-@app.route("/offers/", methods=['GET, POST'])
+@app.route("/offers/", methods=['GET', 'POST'])
 def get_offers():
     """
     Вьюшка обрабатывает GET-запросы получения всех предложений
